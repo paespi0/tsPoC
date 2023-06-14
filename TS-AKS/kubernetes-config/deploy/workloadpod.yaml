@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quick-start
+  namespace: ${svc_acct_namespace}
+  labels:
+    azure.workload.identity/use: "true"
+spec:
+  serviceAccountName: ${svc_acct_name}
+  containers:
+    - image: "paespi0/nginx-aks-keyvault-sample:latest"
+      name: ts-oidc
+      env:
+        - name: KEYVAULT_URL
+          value: ${kv_uri}
+        - name: SECRET_NAME
+          value: ${kv_secret_name}
+      resources:
+        limits:
+          cpu: "1"
+          memory: "512Mi"
+        requests:
+          cpu: "0.5"
+          memory: "256Mi"
+  nodeSelector:
+    kubernetes.io/os: linux

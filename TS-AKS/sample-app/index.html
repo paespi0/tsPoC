@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AKS Key Vault Integration Sample</title>
+</head>
+<body>
+  <h1>AKS Key Vault Integration Sample</h1>
+  <p>Secret Value: <span id="secret-value">Loading...</span></p>
+
+  <script>
+    const secretValueElement = document.getElementById('secret-value');
+
+    fetch('/secret-value')
+      .then(response => response.text())
+      .then(secretValue => {
+        secretValueElement.textContent = secretValue;
+      })
+      .catch(error => {
+        secretValueElement.textContent = 'Error loading secret value';
+      });
+  </script>
+</body>
+</html>
