@@ -19,6 +19,9 @@ jobs:
   terraform-plan:
     name: 'Terraform Plan'
     runs-on: ubuntu-latest
+    env:
+      #this is needed since we are running terraform with read-only permissions
+      ARM_SKIP_PROVIDER_REGISTRATION: true
     outputs:
       tfplanExitCode: ${{ steps.tf-plan.outputs.exitcode }}
  
@@ -31,7 +34,7 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     # Install the latest version of the Terraform CLI
     - name: Setup Terraform
@@ -65,14 +68,13 @@ jobs:
         else 
           exit 0
         fi
-      working-directory: TS-AKS
       
     # Save plan to artifacts  
     - name: Publish Terraform Plan
       uses: actions/upload-artifact@v3
       with:
         name: tfplan
-        path: ${{ github.workspace }}/TS-AKS/tfplan
+        path: TS-AKS/tfplan
         
     # Create string output of Terraform Plan
     - name: Create String Output
