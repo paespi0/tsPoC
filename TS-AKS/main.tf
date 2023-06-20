@@ -18,6 +18,14 @@ terraform {
       version = ">= 2.1.0"
     }
   }
+
+  # Update this block with the location of your terraform state file
+  backend "azurerm" {
+    resource_group_name  = "tsopstfstates"
+    storage_account_name = "tsopstf"
+    container_name       = "tfstatedevops"
+    key                  = "terraform.tfstate"
+  }
 }
 
 # Fetch the details of the existing AKS cluster
