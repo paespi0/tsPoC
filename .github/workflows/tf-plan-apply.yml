@@ -27,7 +27,7 @@ jobs:
       run:
         shell: bash
         working-directory: TS-AKS  # Set the working directory to 'TS-AKS'
- 
+
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
@@ -35,7 +35,7 @@ jobs:
     
     # Install the latest version of the Terraform CLI
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v2.0.3
       with:
         terraform_wrapper: false
  
@@ -132,7 +132,7 @@ jobs:
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v2.0.3
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
