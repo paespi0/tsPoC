@@ -74,13 +74,13 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: tfplan
-        path: TS-AKS/tfplan
+        path: tfplan
         
     # Create string output of Terraform Plan
     - name: Create String Output
       id: tf-plan-string
       run: |
-        TERRAFORM_PLAN=$(terraform show -no-color TS-AKS/tfplan)
+        TERRAFORM_PLAN=$(terraform show -no-color tfplan)
         
         delimiter="$(openssl rand -hex 8)"
         echo "summary<<${delimiter}" >> $GITHUB_OUTPUT
@@ -127,7 +127,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: TS-AKS  # Set the working directory to 'TS-AKS'
+        working-directory: ./TS-AKS  # Set the working directory to 'TS-AKS'
         
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -147,9 +147,8 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: tfplan
-        path: TS-AKS
 
     # Terraform Apply
     # run: terraform apply -auto-approve tfplan
     - name: Terraform Apply
-      run: terraform apply -auto-approve TS-AKS/tfplan
+      run: terraform apply -auto-approve tfplan
