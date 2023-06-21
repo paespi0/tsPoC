@@ -58,7 +58,7 @@ jobs:
       id: tf-plan
       run: |
         export exitcode=0
-        terraform plan -out tfplan || export exitcode=$?
+        terraform plan -out TS-AKS/tfplan || export exitcode=$?
 
         echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
         
