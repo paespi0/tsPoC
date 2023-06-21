@@ -149,6 +149,9 @@ jobs:
         name: tfplan
         path: ./
 
+    - name: List files in current directory
+      run: ls -la
+
     # Terraform Apply
     # run: terraform apply -auto-approve tfplan
     - name: Terraform Apply
