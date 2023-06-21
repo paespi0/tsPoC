@@ -13,7 +13,8 @@ resource "null_resource" "aks_preview_extension" {
     command     = <<-EOT
       az extension add --upgrade --name aks-preview
     EOT
-    interpreter = ["powershell", "-Command"]
+    # interpreter = ["powershell", "-Command"]
+    interpreter = ["/bin/sh", "-c"]
   }
 }
 
