@@ -1,4 +1,4 @@
-tenant_id           = "ead1569d-f405-4905-a2a2-9cd39c25ccf9"
+tenant_id           = ""
 cluster_name        = "ts-cluster"
 dns_prefix          = "truckstop-aks"
 resource_group_name = "truckstop-aks-rg" # Set the resource group name
