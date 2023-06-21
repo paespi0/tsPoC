@@ -29,7 +29,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: TS-AKS  # Set the working directory to 'TS-AKS'
+        working-directory: ./TS-AKS  # Set the working directory to 'TS-AKS'
 
     steps:
     # Checkout the repository to the GitHub Actions runner
