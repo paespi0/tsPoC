@@ -147,7 +147,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: tfplan
-        path: ./
+        path: ./tfplan
 
     - name: List files in current directory
       run: ls -la
